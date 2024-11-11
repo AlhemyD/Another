@@ -1,0 +1,163 @@
+[gd_scene load_steps=5 format=3 uid="uid://vc1mrb5eg6uh"]
+
+[ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_y2c4m"]
+[ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_64sh4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lgheb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08jbg"]
+size = Vector2(13.6713, 59.4645)
+
+[node name="Node" type="Node"]
+
+[node name="overworld" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_top = 5.00003
+offset_right = 1532.0
+offset_bottom = 1706.0
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="K-2" type="StaticBody2D" parent="."]
+position = Vector2(122, 232)
+physics_material_override = SubResource("PhysicsMaterial_lgheb")
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2"]
+build_mode = 1
+polygon = PackedVector2Array(300, 17, 300, 1284, 780, 1284, 780, 17)
+
+[node name="wallpaper" type="ColorRect" parent="K-2"]
+offset_left = 300.0
+offset_top = 17.0
+offset_right = 780.0
+offset_bottom = 1284.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="closed_door3" type="StaticBody2D" parent="."]
+position = Vector2(199, 88.9999)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="closed_door3"]
+offset_left = 510.0
+offset_top = 563.0
+offset_right = 519.0
+offset_bottom = 622.0
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="closed_door3"]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="closed_door2" type="StaticBody2D" parent="."]
+position = Vector2(200, 408)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="closed_door2"]
+offset_left = 510.0
+offset_top = 563.0
+offset_right = 519.0
+offset_bottom = 622.0
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="closed_door2"]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="closed_door" type="StaticBody2D" parent="."]
+position = Vector2(201, -38.0001)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="closed_door"]
+offset_left = 510.0
+offset_top = 563.0
+offset_right = 519.0
+offset_bottom = 622.0
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="closed_door"]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="bars" type="StaticBody2D" parent="."]
+position = Vector2(198, 528)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="bars"]
+offset_left = 510.0
+offset_top = 530.0
+offset_right = 1604.0
+offset_bottom = 622.0
+color = Color(0.258824, 0, 1, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bars"]
+polygon = PackedVector2Array(510.394, 529.811, 510.394, 622.965, 1604.1, 621.509, 1604.1, 529.811)
+
+[node name="closed_door4" type="StaticBody2D" parent="."]
+position = Vector2(198, 654)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="closed_door4"]
+offset_left = 510.0
+offset_top = 563.0
+offset_right = 519.0
+offset_bottom = 622.0
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="closed_door4"]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="closed_door5" type="StaticBody2D" parent="."]
+position = Vector2(198, 870)
+scale = Vector2(0.438877, 0.687037)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="closed_door5"]
+offset_left = 510.0
+offset_top = 563.0
+offset_right = 519.0
+offset_bottom = 622.0
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="closed_door5"]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="K-1 sign" type="ColorRect" parent="."]
+offset_left = 570.0
+offset_top = 242.0
+offset_right = 599.0
+offset_bottom = 249.0
+color = Color(0.458824, 0.454902, 1, 1)
+
+[node name="КПП sign" type="ColorRect" parent="."]
+offset_left = 551.0
+offset_top = 1516.0
+offset_right = 580.0
+offset_bottom = 1523.0
+color = Color(0.458824, 0.454902, 1, 1)
+
+[node name="door (Sai_room)" parent="." instance=ExtResource("2_64sh4")]
+position = Vector2(422, 684)
+rotation = 4.71239
+scene = "res://scenes/sai_room/sai_room.tscn"
+spawn_position = Vector2(541, 503)
+
+[node name="door (K-1)" parent="." instance=ExtResource("2_64sh4")]
+position = Vector2(605, 249)
+scene = "res://scenes/K-1/K-1.tscn"
+spawn_position = Vector2(632, 316)
+
+[node name="door (КПП)" parent="." instance=ExtResource("2_64sh4")]
+position = Vector2(658, 1516)
+rotation = 3.14159
+scene = "res://scenes/K-1/K-1.tscn"
+spawn_position = Vector2(464, 639)
+
+[node name="Player" parent="." instance=ExtResource("1_y2c4m")]
+position = Vector2(464, 639)

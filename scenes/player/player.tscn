@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://dv4w0qns8khpn"]
+
+[ext_resource type="Texture2D" uid="uid://dmm3wmdabfth" path="res://assets/player_animations/blue_robots_in_down_1.png" id="1_ua7q1"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xjxuh"]
+[ext_resource type="Texture2D" uid="uid://tc07gywu6cml" path="res://assets/player_animations/blue_robots_in_down_2.png" id="2_t584i"]
+[ext_resource type="Texture2D" uid="uid://cgracf7yv1ola" path="res://assets/player_animations/blue_robots_in_down_3.png" id="3_lebhe"]
+[ext_resource type="Texture2D" uid="uid://c6dp7m3s1627u" path="res://assets/player_animations/blue_robots_in_down_4.png" id="4_3kc37"]
+[ext_resource type="Texture2D" uid="uid://vj2kntom88un" path="res://assets/player_animations/blue_robots_in_left_1.png" id="5_0im0s"]
+[ext_resource type="Texture2D" uid="uid://cs4q0ih68sotl" path="res://assets/player_animations/blue_robots_in_left_2.png" id="6_ouhcj"]
+[ext_resource type="Texture2D" uid="uid://dy4hf3n0o1s7v" path="res://assets/player_animations/blue_robots_in_left_3.png" id="7_wcrtt"]
+[ext_resource type="Texture2D" uid="uid://cgswgq8o12bno" path="res://assets/player_animations/blue_robots_in_left_4.png" id="8_r657n"]
+[ext_resource type="Texture2D" uid="uid://d3a6xic3uhmtb" path="res://assets/player_animations/blue_robots_in_right_1.png" id="9_6k005"]
+[ext_resource type="Texture2D" uid="uid://cka1hb1xiefw2" path="res://assets/player_animations/blue_robots_in_right_2.png" id="10_m8a1l"]
+[ext_resource type="Texture2D" uid="uid://d5npaev8sw5o" path="res://assets/player_animations/blue_robots_in_right_3.png" id="11_wiepq"]
+[ext_resource type="Texture2D" uid="uid://cm7pkhiniyhdf" path="res://assets/player_animations/blue_robots_in_right_4.png" id="12_vny3t"]
+[ext_resource type="Texture2D" uid="uid://omfmnxmuex5g" path="res://assets/player_animations/blue_robots_in_up_1.png" id="13_5h4tw"]
+[ext_resource type="Texture2D" uid="uid://twvhf3va1xuf" path="res://assets/player_animations/blue_robots_in_up_2.png" id="14_upgyl"]
+[ext_resource type="Texture2D" uid="uid://7q65e4bn23vb" path="res://assets/player_animations/blue_robots_in_up_3.png" id="15_0uw7b"]
+[ext_resource type="Texture2D" uid="uid://bpk75uaaf0qiu" path="res://assets/player_animations/blue_robots_in_up_4.png" id="16_6fibm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrn7u"]
+size = Vector2(34, 11.1667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ku6r7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ua7q1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t584i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lebhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3kc37")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0im0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ouhcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wcrtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r657n")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6k005")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m8a1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wiepq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vny3t")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_5h4tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_upgyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0uw7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6fibm")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+disable_mode = 1
+script = ExtResource("1_xjxuh")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 26.9167)
+shape = SubResource("RectangleShape2D_rrn7u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ku6r7")
+animation = &"down"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(-79.2026, 10.7524)
+limit_smoothed = true

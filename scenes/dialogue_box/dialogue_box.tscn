@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0pfsyk7lq3q"]
+
+[ext_resource type="Script" path="res://scenes/dialogue_box/dialogue_box.gd" id="1_84j6c"]
+[ext_resource type="Texture2D" uid="uid://dftoraybrc1ce" path="res://assets/dialogues/dialogue_box.png" id="2_gucsf"]
+
+[node name="DialogueBox" type="CanvasLayer"]
+script = ExtResource("1_84j6c")
+d_file = "res://assets/dialogues/Комната Сая/Стол с охранником.json"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+anchors_preset = -1
+offset_left = -489.0
+offset_top = -73.0
+offset_right = 502.0
+offset_bottom = 121.0
+texture = ExtResource("2_gucsf")
+patch_margin_left = 1
+patch_margin_right = 1
+metadata/_edit_group_ = true
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 17.0
+offset_right = 699.0
+offset_bottom = 43.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 46.0
+offset_right = 777.0
+offset_bottom = 166.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "Text"
+
+[node name="Reaction" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 29.0
+offset_right = 954.0
+offset_bottom = 166.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "Reaction
+"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
