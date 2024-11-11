@@ -1,3 +1,3 @@
-Just an ordinary game.
-MC sprite for development - Nightmargin (Casey Gu)
+Just an ordinary game. \n
+Sprite's for development - Nightmargin (Casey Gu) \n
 Original Idea - Another Team
