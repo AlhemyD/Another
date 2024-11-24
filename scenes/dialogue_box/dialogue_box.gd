@@ -3,7 +3,9 @@ extends CanvasLayer
 var dialogue=[]
 var current_dialogue_id=-2
 var d_active=false
-
+var continues
+var read
+var end
 func _ready():
 	$NinePatchRect.visible=false
 	if d_file:
@@ -16,31 +18,43 @@ func start():
 	d_active=true
 	$NinePatchRect.visible=true
 	dialogue=load_dialogue()
-	#if dialogue[0]["read"]=="false":
+	read=load_file("res://assets/dialogues/flags.json")
+	continues=load_file("res://assets/dialogues/continues.json")
+	#split[0] - начало, если прочитано
+	#split[1] - конец, если не прочитано
+	if read[0][d_file]=="false":
+		if "no" in continues[0][d_file]:
+			end=len(dialogue)
+		else:			
+			end=int(continues[0][d_file].split(" ")[1])+1
+	else:
+		if "no" in continues[0][d_file]:
+			current_dialogue_id=len(dialogue)
+			end=len(dialogue)
+		else:
+			current_dialogue_id=int(continues[0][d_file].split(" ")[0])
+			end=len(dialogue)
+	
 	next_script()
-	#elif dialogue[0]["line_if_read"]=="-1":
-	#	d_active=false
-	#	return
-	#else:
-	#	current_dialogue_id=int(dialogue[0]["line_if_read"])
-	#	next_script()
+	
 	
 func set_file(file:String):
 	d_file=file
-func load_dialogue():
+func load_file(l_file):
 	var json=JSON.new()	
-	var file=FileAccess.open(d_file,FileAccess.READ)
+	var file=FileAccess.open(l_file,FileAccess.READ)
 	var json_text=file.get_as_text()
 	file.close()
 	json.parse(json_text)
 	var json_data=json.get_data()
-	#var json_data_copy=json_data
-	#json_data_copy[0]["read"]="true"
-	#json_data_copy=JSON.stringify(json_data_copy)
-	#file=FileAccess.open(d_file,FileAccess.WRITE)
-	#file.store_string(json_data_copy)
-	#file.close()
 	return json_data
+func write_file(file_path, variable):
+	var json_string=JSON.stringify(variable)
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	file.store_string(json_string)
+	file.close()
+func load_dialogue():
+	return load_file(d_file)
 
 func _input(event: InputEvent) -> void:
 	if not d_active:
@@ -50,9 +64,12 @@ func _input(event: InputEvent) -> void:
 		
 func next_script():
 	current_dialogue_id+=1
-	if current_dialogue_id>=len(dialogue):
+	if current_dialogue_id>=end:
 		$Timer.start()
-		$NinePatchRect.visible=false	
+		$NinePatchRect.visible=false
+		if read[0][d_file]=="false":
+			read[0][d_file]="true"
+			write_file("res://assets/dialogues/flags.json", read)
 		return
 	$NinePatchRect/Name.text=dialogue[current_dialogue_id]["name"]
 	$NinePatchRect/Text.text=dialogue[current_dialogue_id]["text"]
