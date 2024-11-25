@@ -1,20 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ug1egaxuvwwu"]
+[gd_scene load_steps=3 format=3 uid="uid://ug1egaxuvwwu"]
 
 [ext_resource type="Texture2D" uid="uid://ifs8l2xvb7n8" path="res://assets/inventory/slot.png" id="1_2l3d7"]
+[ext_resource type="Script" path="res://scenes/inventory/slot.gd" id="1_lwesq"]
 
 [node name="Slot" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_lwesq")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_2l3d7")
 centered = false
 vframes = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Sprite2D"]
+[node name="CenterContainer" type="CenterContainer" parent="background"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,8 +30,9 @@ scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="Sprite2D/CenterContainer"]
+[node name="Panel" type="Panel" parent="background/CenterContainer"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/CenterContainer/Panel"]
+[node name="item" type="Sprite2D" parent="background/CenterContainer/Panel"]
+unique_name_in_owner = true
 scale = Vector2(1.5, 1.5)

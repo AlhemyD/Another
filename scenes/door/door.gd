@@ -11,10 +11,6 @@ func _on_body_exited(body: CharacterBody2D) -> void:
 	player_in_area = false
 	
 func _on_interact():
-	
-	#get_tree().get_root().get_node("Node").get_node("Player").position=spawn_position
-	
-		
 	get_tree().change_scene_to_file(scene)
 	
 var change_door=false

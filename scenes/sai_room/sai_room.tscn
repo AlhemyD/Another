@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=13 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_mmp4u"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="3_h7g21"]
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_aiq34"]
+[ext_resource type="PackedScene" uid="uid://2u5fuw2d2iq8" path="res://scenes/inventory/item.tscn" id="5_8xfq5"]
+[ext_resource type="Resource" uid="uid://calekgrai3ada" path="res://resources/testing_bulb(Nightmargin).tres" id="6_62ld0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ecdlc"]
 
@@ -106,5 +108,16 @@ polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.0001
 
 [node name="Inventory" parent="." instance=ExtResource("4_aiq34")]
 
+[node name="Item (Area2D)" parent="." instance=ExtResource("5_8xfq5")]
+position = Vector2(518, 321)
+item = ExtResource("6_62ld0")
+
+[node name="Item (Area2D)2" parent="." instance=ExtResource("5_8xfq5")]
+position = Vector2(443, 390)
+item = ExtResource("6_62ld0")
+
 [node name="Player" parent="." instance=ExtResource("1_lykhb")]
 position = Vector2(379, 210)
+
+[connection signal="take_item" from="Item (Area2D)" to="Inventory" method="_on_item_area_2d_take_item"]
+[connection signal="take_item" from="Item (Area2D)2" to="Inventory" method="_on_item_area_2d_take_item"]
