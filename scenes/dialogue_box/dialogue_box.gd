@@ -59,7 +59,7 @@ func load_dialogue():
 func _input(event: InputEvent) -> void:
 	if not d_active:
 		return
-	if event.is_action_pressed("touch"):
+	if event.is_action_pressed("skip_dialogue"):
 		next_script()
 		
 func next_script():

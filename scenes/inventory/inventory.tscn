@@ -1,17 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://jpj7klereh7j"]
+[gd_scene load_steps=4 format=3 uid="uid://jpj7klereh7j"]
 
 [ext_resource type="PackedScene" uid="uid://ug1egaxuvwwu" path="res://scenes/inventory/slot.tscn" id="1_3834h"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory.gd" id="1_sug5e"]
+[ext_resource type="Script" path="res://scenes/inventory/inv_panel.gd" id="2_16qgo"]
 
-[node name="Inventory" type="Panel"]
-offset_right = 160.0
-offset_bottom = 160.0
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_sug5e")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="InvPanel" type="Panel" parent="."]
+visible = false
+offset_right = 192.0
+offset_bottom = 192.0
+script = ExtResource("2_16qgo")
+
+[node name="GridContainer" type="GridContainer" parent="InvPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -86.0
+offset_right = 86.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
 columns = 4
+metadata/_edit_group_ = true
 
-[node name="Slot" parent="GridContainer" instance=ExtResource("1_3834h")]
+[node name="Slot" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot2" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot3" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot4" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot5" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot6" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot7" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot8" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot9" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot10" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot11" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot12" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot13" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot14" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot15" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
+layout_mode = 2
+
+[node name="Slot16" parent="InvPanel/GridContainer" instance=ExtResource("1_3834h")]
 layout_mode = 2

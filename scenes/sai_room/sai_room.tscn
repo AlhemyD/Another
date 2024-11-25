@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=11 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_mmp4u"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="3_h7g21"]
+[ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_aiq34"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ecdlc"]
 
@@ -102,6 +103,8 @@ object_d_file = "res://assets/dialogues/Комната Сая/Дверь из к
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door (K-2)/Area2D"]
 polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.00018, 59, 0.000183105)
+
+[node name="Inventory" parent="." instance=ExtResource("4_aiq34")]
 
 [node name="Player" parent="." instance=ExtResource("1_lykhb")]
 position = Vector2(379, 210)
