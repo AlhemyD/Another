@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qcvlbrobeu0"
-path="res://.godot/imported/inventory_bug.png-863db2db7e42936937cfa903056bb733.ctex"
+uid="uid://du2cckp3bxbsp"
+path="res://.godot/imported/inventory_bug-0004.png-2a411d94c573444aec1833e28f1a6b44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inventory/inventory_bug.png"
-dest_files=["res://.godot/imported/inventory_bug.png-863db2db7e42936937cfa903056bb733.ctex"]
+source_file="res://assets/inventory/inventory_bug-0004.png"
+dest_files=["res://.godot/imported/inventory_bug-0004.png-2a411d94c573444aec1833e28f1a6b44.ctex"]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=1
+compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

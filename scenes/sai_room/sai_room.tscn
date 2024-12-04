@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=14 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_aiq34"]
 [ext_resource type="PackedScene" uid="uid://2u5fuw2d2iq8" path="res://scenes/inventory/item.tscn" id="5_8xfq5"]
 [ext_resource type="Resource" uid="uid://calekgrai3ada" path="res://resources/testing_bulb(Nightmargin).tres" id="6_62ld0"]
+[ext_resource type="Resource" uid="uid://dsdm8qwjjv44x" path="res://resources/LightningBulb.tres" id="7_b4wbe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ecdlc"]
 
@@ -113,8 +114,8 @@ position = Vector2(518, 321)
 item = ExtResource("6_62ld0")
 
 [node name="Item (Area2D)2" parent="." instance=ExtResource("5_8xfq5")]
-position = Vector2(443, 390)
-item = ExtResource("6_62ld0")
+position = Vector2(391, 314)
+item = ExtResource("7_b4wbe")
 
 [node name="Player" parent="." instance=ExtResource("1_lykhb")]
 position = Vector2(379, 210)
