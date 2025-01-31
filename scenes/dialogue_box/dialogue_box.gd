@@ -20,8 +20,8 @@ func start():
 	dialogue=load_dialogue()
 	read=load_file("res://assets/dialogues/flags.json")
 	continues=load_file("res://assets/dialogues/continues.json")
-	#split[0] - начало, если прочитано
-	#split[1] - конец, если не прочитано
+	#split[0] - начало, если прочитано. Номер минус 2 (-2)
+	#split[1] - конец, если не прочитано. Нумерация корректная, начинается с 0
 	if read[0][d_file]=="false":
 		if "no" in continues[0][d_file]:
 			end=len(dialogue)

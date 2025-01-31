@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw560impcvkb7"]
+
+[ext_resource type="Texture2D" uid="uid://ceiwuf708614i" path="res://assets/static_objects/Sprite-0007.1 MRI.png" id="1_iai0p"]
+[ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="2_0tr51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37suk"]
+size = Vector2(56, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mt3m"]
+size = Vector2(81, 131)
+
+[node name="MRI" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(377, 196)
+shape = SubResource("RectangleShape2D_37suk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(378, 198)
+scale = Vector2(1.64063, 1.64063)
+texture = ExtResource("1_iai0p")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-230.4, -120.686)
+scale = Vector2(0.609524, 0.609524)
+script = ExtResource("2_0tr51")
+object_d_file = "res://assets/dialogues/Комната Сая/Искрящий аппарат МРТ.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(379.5, 198.5)
+shape = SubResource("RectangleShape2D_0mt3m")

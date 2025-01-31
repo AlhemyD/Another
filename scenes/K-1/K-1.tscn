@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://30415w2xi272"]
+[gd_scene load_steps=8 format=3 uid="uid://30415w2xi272"]
 
+[ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_kbs15"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_uyy6p"]
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_ojkg2"]
+[ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="3_8aq68"]
+[ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_mm7gv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4n013"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shmvk"]
+size = Vector2(36, 680)
+
 [node name="Node" type="Node"]
+
+[node name="DialogueBox" parent="." instance=ExtResource("1_kbs15")]
+d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Лаборатория.json"
 
 [node name="overworld" type="ColorRect" parent="."]
 offset_left = 4.0
@@ -37,6 +46,13 @@ offset_right = 599.0
 offset_bottom = 249.0
 color = Color(0.458824, 0.454902, 1, 1)
 
+[node name="Area2D" type="Area2D" parent="K-2 sign"]
+script = ExtResource("3_8aq68")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (К-2).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2 sign/Area2D"]
+polygon = PackedVector2Array(0, 7, 29, 7, 14, 11)
+
 [node name="R-1 sign" type="ColorRect" parent="."]
 offset_left = 670.0
 offset_top = 1516.0
@@ -44,12 +60,27 @@ offset_right = 699.0
 offset_bottom = 1523.0
 color = Color(0.458824, 0.454902, 1, 1)
 
+[node name="Area2D" type="Area2D" parent="R-1 sign"]
+script = ExtResource("3_8aq68")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (R-1).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="R-1 sign/Area2D"]
+polygon = PackedVector2Array(0, 0, 29, 0, 15, -4)
+
 [node name="window" type="ColorRect" parent="."]
 offset_left = 403.0
 offset_top = 747.0
 offset_right = 421.0
 offset_bottom = 1427.0
 color = Color(0.372549, 0.372549, 0.952941, 1)
+
+[node name="Area2D" type="Area2D" parent="window"]
+script = ExtResource("3_8aq68")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Окно в лабораторию.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window/Area2D"]
+position = Vector2(8, 340)
+shape = SubResource("RectangleShape2D_shmvk")
 
 [node name="valve" type="StaticBody2D" parent="."]
 position = Vector2(1, -1)
@@ -72,6 +103,16 @@ scene = "res://scenes/K-2/K-2.tscn"
 position = Vector2(658, 1516)
 rotation = 3.14159
 scene = "res://scenes/K-2/K-2.tscn"
+closed = true
+
+[node name="Area2D" type="Area2D" parent="door (R-1)"]
+script = ExtResource("3_8aq68")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Запертая дверь R-1.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door (R-1)/Area2D"]
+polygon = PackedVector2Array(59, 9.00024, 59, 0.000244141, 0, 0, 0, 9, 27.9999, 18.0001)
+
+[node name="Inventory" parent="." instance=ExtResource("4_mm7gv")]
 
 [node name="Player" parent="." instance=ExtResource("1_uyy6p")]
 position = Vector2(632, 316)

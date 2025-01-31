@@ -5,7 +5,6 @@
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_84j6c")
-d_file = "res://assets/dialogues/Комната Сая/Стол с охранником.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1

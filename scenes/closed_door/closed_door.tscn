@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://81h4c3yytnwf"]
+
+[ext_resource type="Texture2D" uid="uid://pcg8byweo6cl" path="res://assets/static_objects/door_up.png" id="1_gvcq2"]
+[ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="2_f1d2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08jbg"]
+size = Vector2(13.6713, 59.4645)
+
+[node name="closed_door" type="StaticBody2D"]
+position = Vector2(201, -38.0001)
+scale = Vector2(0.438877, 0.687037)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(517.24, 592.812)
+rotation = -1.56939
+scale = Vector2(0.606563, 0.472149)
+texture = ExtResource("1_gvcq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(517.23, 592.797)
+shape = SubResource("RectangleShape2D_08jbg")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_f1d2o")
+object_d_file = "res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Запертая дверь.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(524.065, 622.965, 524.065, 563.289, 533.179, 592.399)

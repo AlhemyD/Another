@@ -1,0 +1,37 @@
+[
+{
+	"name":"Сай (мысли)",
+	"text":"2 этаж",
+	"reaction":"serious"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"Лаборатория",
+	"reaction":"serious"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"...",
+	"reaction":"silence"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"Откуда мне известно значение этих знаков?",
+	"reaction":"question"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"Довольно странное чувство.",
+	"reaction":"serious"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"2 этаж",
+	"reaction":"serious"
+},
+{
+	"name":"Сай (мысли)",
+	"text":"Лаборатория",
+	"reaction":"serious"
+}
+]

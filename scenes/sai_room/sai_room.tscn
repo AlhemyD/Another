@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=13 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_mmp4u"]
+[ext_resource type="PackedScene" uid="uid://bw560impcvkb7" path="res://scenes/MRI/mri.tscn" id="2_v8cs4"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="3_h7g21"]
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_aiq34"]
 [ext_resource type="PackedScene" uid="uid://2u5fuw2d2iq8" path="res://scenes/inventory/item.tscn" id="5_8xfq5"]
@@ -10,12 +11,6 @@
 [ext_resource type="Resource" uid="uid://dsdm8qwjjv44x" path="res://resources/LightningBulb.tres" id="7_b4wbe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ecdlc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37suk"]
-size = Vector2(56, 106)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mt3m"]
-size = Vector2(81, 131)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7flgx"]
 size = Vector2(72, 77)
@@ -52,27 +47,7 @@ offset_right = 780.0
 offset_bottom = 572.0
 color = Color(0.147672, 0.147672, 0.147672, 1)
 
-[node name="MRI" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MRI"]
-position = Vector2(377, 196)
-shape = SubResource("RectangleShape2D_37suk")
-
-[node name="ColorRect" type="ColorRect" parent="MRI"]
-offset_left = 349.0
-offset_top = 143.0
-offset_right = 405.0
-offset_bottom = 249.0
-color = Color(0.608347, 0.330773, 0.206812, 1)
-
-[node name="Area2D" type="Area2D" parent="MRI/ColorRect"]
-position = Vector2(-349, -143)
-script = ExtResource("1_7fybd")
-object_d_file = "res://assets/dialogues/Комната Сая/Искрящий аппарат МРТ.json"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MRI/ColorRect/Area2D"]
-position = Vector2(379.5, 198.5)
-shape = SubResource("RectangleShape2D_0mt3m")
+[node name="MRI" parent="." instance=ExtResource("2_v8cs4")]
 
 [node name="guard" type="StaticBody2D" parent="."]
 

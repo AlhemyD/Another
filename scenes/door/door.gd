@@ -1,5 +1,6 @@
 extends Area2D
 @export_global_file var scene: String
+@export var closed = false
 var player_in_area=false
 
 
@@ -20,9 +21,9 @@ func _process(delta):
 		if get_node("Area2D"):
 			get_node("Area2D").use_dialogue()
 			used_dialogue=true
-		else:
+		elif not closed:
 			change_door=true
-	if used_dialogue and not get_tree().get_root().get_node("Node").get_node("DialogueBox").d_active:
+	if not closed and used_dialogue and not get_tree().get_root().get_node("Node").get_node("DialogueBox").d_active:
 		change_door=true
 	if change_door:
 		_on_interact()

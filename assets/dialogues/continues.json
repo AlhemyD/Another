@@ -3,6 +3,16 @@
 		"res://assets/dialogues/Комната Сая/Искрящий аппарат МРТ.json": "0 1",
 		"res://assets/dialogues/Комната Сая/Стол с охранником.json":"-1 0",
 		"res://assets/dialogues/Комната Сая/Комната Сая.json":"no",
-		"res://assets/dialogues/Комната Сая/Дверь из комнаты Сая.json":"no"
+		"res://assets/dialogues/Комната Сая/Дверь из комнаты Сая.json":"no",		
+		"res://assets/dialogues/Комната Сая/Сай после эффекта замедления.json":"no",		
+		"res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Дверь комнаты Сая.json":"3 4",		
+		"res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Запертая дверь.json":"-2 0",		
+		"res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Решётка.json":"-2 1",		
+		"res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Табличка с надписью (К-1).json":"3 4",		
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Запертая дверь R-1.json":"0 1",		
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Лаборатория.json":"no",		
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Окно в лабораторию.json":"-1 0",		
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (R-1).json":"-2 1",
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (К-2).json":"-2 1"		
 	}
 ]
