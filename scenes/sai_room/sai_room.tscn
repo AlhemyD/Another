@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=14 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
+[ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="2_2yaum"]
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="2_mmp4u"]
 [ext_resource type="PackedScene" uid="uid://bw560impcvkb7" path="res://scenes/MRI/mri.tscn" id="2_v8cs4"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="3_h7g21"]
@@ -21,24 +22,31 @@ size = Vector2(91, 97)
 [node name="Node" type="Node"]
 
 [node name="DialogueBox" parent="." instance=ExtResource("3_h7g21")]
-offset = Vector2(550, 600)
-transform = Transform2D(1, 0, 0, 1, 550, 600)
 d_file = "res://assets/dialogues/Комната Сая/Комната Сая.json"
 
 [node name="overworld" type="ColorRect" parent="."]
-offset_left = -61.0
-offset_top = -52.0
-offset_right = 1178.0
-offset_bottom = 672.0
+offset_left = -864.0
+offset_top = -644.0
+offset_right = 2152.0
+offset_bottom = 1223.0
 color = Color(0.0338533, 0.0338533, 0.0338533, 1)
 
 [node name="Sai\'s room" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_ecdlc")
-metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sai\'s room"]
 build_mode = 1
 polygon = PackedVector2Array(300, 92, 300, 572, 780, 572, 780, 92)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sai\'s room"]
+position = Vector2(535, 326)
+scale = Vector2(5.54687, 5.14062)
+texture = ExtResource("2_2yaum")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sai\'s room"]
+position = Vector2(542, 332)
+scale = Vector2(4.15625, 4.26563)
+texture = ExtResource("2_2yaum")
 
 [node name="wallpaper" type="ColorRect" parent="Sai\'s room"]
 offset_left = 300.0
