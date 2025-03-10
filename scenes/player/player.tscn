@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dv4w0qns8khpn"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xjxuh"]
+[ext_resource type="Script" uid="uid://bqyqi2kf8sn0u" path="res://scenes/player/player.gd" id="1_xjxuh"]
 [ext_resource type="Texture2D" uid="uid://ei3ycjtocpxt" path="res://assets/player_animations/Sai_down1.png" id="2_e2x5v"]
 [ext_resource type="Texture2D" uid="uid://n5sxq0ktss78" path="res://assets/player_animations/Sai_down2.png" id="3_houo6"]
 [ext_resource type="Texture2D" uid="uid://bf8i3xbvqwdaq" path="res://assets/player_animations/Sai_down3.png" id="4_f2ut3"]
@@ -110,7 +110,6 @@ sprite_frames = SubResource("SpriteFrames_ku6r7")
 animation = &"down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -5.33333)
 scale = Vector2(-79.2026, 10.7524)
 zoom = Vector2(2, 2)
 limit_smoothed = true

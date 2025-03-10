@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqe4li1wg8wwu"]
 
-[ext_resource type="Script" path="res://scenes/door/door.gd" id="1_2071c"]
+[ext_resource type="Script" uid="uid://c7py0hydxx5qy" path="res://scenes/door/door.gd" id="1_2071c"]
 [ext_resource type="Texture2D" uid="uid://pcg8byweo6cl" path="res://assets/static_objects/door_up.png" id="2_sg008"]
 
 [node name="door" type="Area2D"]

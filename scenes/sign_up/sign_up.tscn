@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b27ga8ooa2xvi" path="res://assets/static_objects/sign_up/Sign_up3.png" id="3_2fc21"]
 [ext_resource type="Texture2D" uid="uid://c3053tifk33tx" path="res://assets/static_objects/sign_up/Sign_up4.png" id="4_tqp8o"]
 [ext_resource type="Texture2D" uid="uid://b2qrsvchdtven" path="res://assets/static_objects/sign_up/Sign_up5.png" id="5_3887c"]
-[ext_resource type="Script" path="res://scenes/sign_up/sign_up.gd" id="6_33u12"]
+[ext_resource type="Script" uid="uid://cout30745mkt7" path="res://scenes/sign_up/sign_up.gd" id="6_33u12"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lwpan"]
 animations = [{
@@ -30,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[node name="Sign_up" type="AnimatedSprite2D"]
 position = Vector2(563, 1508)
 scale = Vector2(2.0625, 2.0625)
 sprite_frames = SubResource("SpriteFrames_lwpan")

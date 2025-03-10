@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2u5fuw2d2iq8"]
 
-[ext_resource type="Script" path="res://scenes/inventory/item.gd" id="1_t8t5m"]
+[ext_resource type="Script" uid="uid://bqxcgjn2j2ppt" path="res://scenes/inventory/item.gd" id="1_t8t5m"]
 [ext_resource type="Texture2D" uid="uid://8qcvlbrobeu0" path="res://assets/inventory/inventory_bug.png" id="1_v3lm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_araru"]

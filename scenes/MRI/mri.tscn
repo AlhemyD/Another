@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw560impcvkb7"]
 
 [ext_resource type="Texture2D" uid="uid://ceiwuf708614i" path="res://assets/static_objects/Sprite-0007.1 MRI.png" id="1_iai0p"]
-[ext_resource type="Script" path="res://scenes/dialogue_box/object.gd" id="2_0tr51"]
+[ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="2_0tr51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37suk"]
 size = Vector2(56, 106)
