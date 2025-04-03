@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://30415w2xi272"]
+[gd_scene load_steps=14 format=3 uid="uid://30415w2xi272"]
 
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_kbs15"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_uyy6p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="6_tmj32"]
 [ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="7_v4lmi"]
 [ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="8_tmj32"]
+[ext_resource type="PackedScene" uid="uid://oj2llbhpbppp" path="res://scenes/enemy/enemy.tscn" id="10_2c403"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4n013"]
 
@@ -131,6 +132,9 @@ object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2 sign/Area2D"]
 position = Vector2(-17, 1)
 polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
+
+[node name="enemy" parent="." instance=ExtResource("10_2c403")]
+position = Vector2(664, 589)
 
 [node name="Player" parent="." instance=ExtResource("1_uyy6p")]
 position = Vector2(632, 316)

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @export var speed=250
+@export var hp = 20
 @export var limit_left = -10000000
 @export var limit_top = -10000000
 @export var limit_right = 10000000
