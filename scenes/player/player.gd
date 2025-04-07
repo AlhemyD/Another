@@ -1,11 +1,17 @@
 extends CharacterBody2D
 @export var speed=250
-@export var hp = 20
+@export var hp = 100
 @export var limit_left = -10000000
 @export var limit_top = -10000000
 @export var limit_right = 10000000
 @export var limit_bottom = 10000000
+@export var attack = 20
 
+var enemy_in_range = false
+var number_enemy_in_range = 0
+var enemy_attack_cooldown = true
+var alive = true
+var attack_in_progress = false
 
 
 var screen_size
@@ -32,6 +38,14 @@ func _physics_process(delta):
 		velocity.y-=1
 	if Input.is_action_pressed("move_down"):
 		velocity.y+=1
+		
+		
+	if Input.is_action_just_pressed("attack"):
+		print("Player's attacking")
+		attack_in_progress = true
+		global.player_current_attack=true
+		
+		
 	if velocity.length()>0:
 		velocity=velocity.normalized()*speed
 		$AnimatedSprite2D.play()
@@ -48,7 +62,39 @@ func _physics_process(delta):
 	elif velocity.y != 0 && velocity.y<0:
 		$AnimatedSprite2D.animation="up"
 	move_and_slide()
+	
+	enemy_attack()
+	
+	if hp<=0:
+		alive = false #добавить экран смерти
+		hp = 0
+		print("Player's dead")
+		self.queue_free() #убрать позднее, просто удаляет узел из сцены
+
+func _on_player_hitbox_body_entered(body: CharacterBody2D) -> void:
+	if body.has_method("enemy"):
+		enemy_in_range = true
+		number_enemy_in_range += 1
 
 
+func _on_player_hitbox_body_exited(body: CharacterBody2D) -> void:
+	if body.has_method("enemy"):
+		number_enemy_in_range -= 1
+		if number_enemy_in_range <= 0:
+			enemy_in_range = false
 
+func enemy_attack():
+	if enemy_in_range and enemy_attack_cooldown:
+		hp = hp - 10
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		
+		print(hp)
+
+func player():
+	pass
+
+
+func _on_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true
 	

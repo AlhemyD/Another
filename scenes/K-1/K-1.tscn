@@ -136,6 +136,10 @@ polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7
 [node name="enemy" parent="." instance=ExtResource("10_2c403")]
 position = Vector2(664, 589)
 
+[node name="enemy2" parent="." instance=ExtResource("10_2c403")]
+position = Vector2(780, 548)
+enemy_id = 1
+
 [node name="Player" parent="." instance=ExtResource("1_uyy6p")]
 position = Vector2(632, 316)
 limit_left = 329
