@@ -46,6 +46,7 @@ func _physics_process(delta):
 		global.player_current_attack=true
 		
 		
+		
 	if velocity.length()>0:
 		velocity=velocity.normalized()*speed
 		$AnimatedSprite2D.play()
@@ -61,6 +62,21 @@ func _physics_process(delta):
 		$AnimatedSprite2D.animation = "down"
 	elif velocity.y != 0 && velocity.y<0:
 		$AnimatedSprite2D.animation="up"
+	
+	if attack_in_progress:
+		if $AnimatedSprite2D.animation == "right":
+			#$AnimatedSprite2D.animation = "attack_right"
+			pass #play attack animation RIGHT
+		if $AnimatedSprite2D.animation == "left":
+			#$AnimatedSprite2D.animation = "attack_left"
+			pass #play attack animation LEFT
+		if $AnimatedSprite2D.animation == "up":
+			#$AnimatedSprite2D.animation = "attack_up"
+			pass #play attack animation UP
+		if $AnimatedSprite2D.animation == "down":
+			#$AnimatedSprite2D.animation = "attack_down"
+			pass #play attack animation DOWN
+		$deal_attack_timer.start()
 	move_and_slide()
 	
 	enemy_attack()
@@ -95,6 +111,21 @@ func player():
 	pass
 
 
+
 func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 	
+
+
+func _on_deal_attack_timer_timeout() -> void:
+	$deal_attack_timer.stop()
+	global.player_current_attack = false
+	attack_in_progress = false
+
+
+func update_health():
+	var healthbar = $HealthBar
+	
+
+func _on_regen_timer_timeout() -> void:
+	pass # Replace with function body.

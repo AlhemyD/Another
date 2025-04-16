@@ -9,6 +9,8 @@ var player_in_range = false
 var queue_freed = false
 @export var enemy_id = 0
 
+var can_take_damage = true
+
 func _ready() -> void:
 	if enemy_id in global.enemies_slain:
 		self.queue_free()
@@ -56,11 +58,18 @@ func _on_enemy_hitbox_body_exited(body: CharacterBody2D) -> void:
 		player_in_range = false
 		
 func deal_with_damage():
-	if player_in_range and global.player_current_attack:
+	if player_in_range and global.player_current_attack and can_take_damage:
 		hp-=20
 		global.player_current_attack=false
 		print("enemy was damaged. Current hp: ",hp)
+		$take_damage_cooldown.start()
+		can_take_damage=false
 		if hp<=0:
 			dead = true
 			global.enemies_slain.append(enemy_id)
 			print("enemy slain")
+
+
+func _on_take_damage_cooldown_timeout() -> void:
+	can_take_damage = true
+	$take_damage_cooldown.stop()

@@ -25,7 +25,22 @@ size = Vector2(34, 11.1667)
 animations = [{
 "frames": [],
 "loop": true,
-"name": &"attack",
+"name": &"attack_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -107,7 +122,6 @@ disable_mode = 1
 motion_mode = 1
 script = ExtResource("1_xjxuh")
 speed = 200
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 26.9167)
@@ -131,6 +145,22 @@ shape = SubResource("CapsuleShape2D_kvlxm")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 
+[node name="deal_attack_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.677115, 0.933883, 0.269493, 1)
+offset_left = -24.0
+offset_top = -52.6667
+offset_right = 24.0
+offset_bottom = -44.6667
+show_percentage = false
+
+[node name="regen_timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]
