@@ -3,13 +3,14 @@ extends CharacterBody2D
 @export var speed = 100
 var player_chase = false
 var player = null
-@export var attack = 10
+@export var damage = 10
 var player_in_range = false
 @export var dead = false
 var queue_freed = false
 @export var enemy_id = 0
 
 var can_take_damage = true
+var attack_in_progress = false
 
 func _ready() -> void:
 	if enemy_id in global.enemies_slain:
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity)
 	if dead and not queue_freed:
 		self.queue_free()
+		global.enemies_in_range.erase(enemy_id)
 		queue_freed = true
 	deal_with_damage()
 	update_health()
@@ -52,11 +54,15 @@ func enemy():
 func _on_enemy_hitbox_body_entered(body: CharacterBody2D) -> void:
 	if body.has_method("player"):
 		player_in_range = true
+		global.enemies_in_range[enemy_id]= damage
+		global.enemies_attacking[enemy_id]=true
 
 
 func _on_enemy_hitbox_body_exited(body: CharacterBody2D) -> void:
 	if body.has_method("player"):
 		player_in_range = false
+		global.enemies_in_range.erase(enemy_id)
+		global.enemies_attacking[enemy_id]=false
 		
 func deal_with_damage():
 	if player_in_range and global.player_current_attack and can_take_damage:
@@ -68,7 +74,7 @@ func deal_with_damage():
 		if hp<=0:
 			dead = true
 			global.enemies_slain.append(enemy_id)
-			print("enemy slain")
+			print("enemy ",enemy_id," slain")
 
 
 func update_health():

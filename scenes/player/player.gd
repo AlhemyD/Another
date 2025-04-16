@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed=250
+@export var speed=200
 @export var hp = 100
 @export var limit_left = -10000000
 @export var limit_top = -10000000
@@ -48,9 +48,9 @@ func _physics_process(delta):
 		global.player_current_attack=true
 		global.player_current_damage = damage
 	if Input.is_action_pressed("speed_up"):
-		speed = 350
+		speed = 300
 	else:
-		speed = 250
+		speed = 200
 		
 		
 		
@@ -87,7 +87,7 @@ func _physics_process(delta):
 	update_health()
 	move_and_slide()
 	
-	enemy_attack()
+	enemy_attack(10)
 	
 	if hp<=0:
 		alive = false #добавить экран смерти
@@ -107,9 +107,9 @@ func _on_player_hitbox_body_exited(body: CharacterBody2D) -> void:
 		if number_enemy_in_range <= 0:
 			enemy_in_range = false
 
-func enemy_attack():
+func enemy_attack(damage: int):
 	if enemy_in_range and enemy_attack_cooldown:
-		hp = hp - 10
+		hp = hp - damage
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		

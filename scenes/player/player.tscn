@@ -121,7 +121,6 @@ scale = Vector2(1.5, 1.5)
 disable_mode = 1
 motion_mode = 1
 script = ExtResource("1_xjxuh")
-speed = 200
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
