@@ -13,10 +13,12 @@ var enemy_attack_cooldown = true
 var alive = true
 var attack_in_progress = false
 
+var regen = false
 
 var screen_size
 
 func _ready():
+	
 	screen_size = Vector2(pow(2,20),pow(2,20))
 	var cam=$Camera2D
 	cam.limit_left = limit_left
@@ -77,6 +79,7 @@ func _physics_process(delta):
 			#$AnimatedSprite2D.animation = "attack_down"
 			pass #play attack animation DOWN
 		$deal_attack_timer.start()
+	update_health()
 	move_and_slide()
 	
 	enemy_attack()
@@ -125,7 +128,25 @@ func _on_deal_attack_timer_timeout() -> void:
 
 func update_health():
 	var healthbar = $HealthBar
+	healthbar.value = hp
 	
+	if hp >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		if not regen:
+			$regen_timer.start()
+			regen = true
+		
+		
 
 func _on_regen_timer_timeout() -> void:
-	pass # Replace with function body.
+	if hp < 100 and alive and regen:
+		hp+=20
+		
+		if hp>100:
+			hp=100
+			$regen_timer.stop()
+			regen = false
+		print("Healed player + 20 hp, current HP: ",hp)
+	
