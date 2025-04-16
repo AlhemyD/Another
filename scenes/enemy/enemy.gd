@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 		self.queue_free()
 		queue_freed = true
 	deal_with_damage()
+	update_health()
 
 func _on_detection_area_body_entered(body: CharacterBody2D) -> void:
 	player = body
@@ -59,7 +60,7 @@ func _on_enemy_hitbox_body_exited(body: CharacterBody2D) -> void:
 		
 func deal_with_damage():
 	if player_in_range and global.player_current_attack and can_take_damage:
-		hp-=20
+		hp-=global.player_current_damage
 		global.player_current_attack=false
 		print("enemy was damaged. Current hp: ",hp)
 		$take_damage_cooldown.start()
@@ -69,6 +70,15 @@ func deal_with_damage():
 			global.enemies_slain.append(enemy_id)
 			print("enemy slain")
 
+
+func update_health():
+	var healthbar = $HealthBar
+	healthbar.value = hp	
+	if hp >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		
 
 func _on_take_damage_cooldown_timeout() -> void:
 	can_take_damage = true

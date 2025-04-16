@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var limit_top = -10000000
 @export var limit_right = 10000000
 @export var limit_bottom = 10000000
-@export var attack = 20
+@export var damage = 20
 
 var enemy_in_range = false
 var number_enemy_in_range = 0
@@ -46,6 +46,11 @@ func _physics_process(delta):
 		print("Player's attacking")
 		attack_in_progress = true
 		global.player_current_attack=true
+		global.player_current_damage = damage
+	if Input.is_action_pressed("speed_up"):
+		speed = 350
+	else:
+		speed = 250
 		
 		
 		
@@ -123,6 +128,7 @@ func _on_attack_cooldown_timeout() -> void:
 func _on_deal_attack_timer_timeout() -> void:
 	$deal_attack_timer.stop()
 	global.player_current_attack = false
+	global.player_current_damage = 0
 	attack_in_progress = false
 
 
