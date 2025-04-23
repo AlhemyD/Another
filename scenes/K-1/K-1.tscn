@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://30415w2xi272"]
+[gd_scene load_steps=16 format=3 uid="uid://30415w2xi272"]
 
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_kbs15"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_uyy6p"]
@@ -7,15 +7,19 @@
 [ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="3_8aq68"]
 [ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="4_aesje"]
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_mm7gv"]
+[ext_resource type="Texture2D" uid="uid://dy1ecvj7g5kdw" path="res://assets/static_objects/Valve.png" id="6_2c403"]
+[ext_resource type="Texture2D" uid="uid://cmarc7rudjhk" path="res://assets/static_objects/window_horizontal.png" id="6_41a4t"]
 [ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="6_tmj32"]
 [ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="7_v4lmi"]
 [ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="8_tmj32"]
-[ext_resource type="PackedScene" uid="uid://oj2llbhpbppp" path="res://scenes/enemy/enemy.tscn" id="10_2c403"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4n013"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shmvk"]
-size = Vector2(36, 680)
+size = Vector2(34.5266, 130.637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c403"]
+size = Vector2(80, 72)
 
 [node name="Node" type="Node"]
 
@@ -67,33 +71,40 @@ object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)
 position = Vector2(-16, -5.91856e-05)
 polygon = PackedVector2Array(0, 0, 32, 0, 16, -4.36365)
 
-[node name="window" type="ColorRect" parent="."]
-offset_left = 403.0
-offset_top = 747.0
-offset_right = 421.0
-offset_bottom = 1427.0
-color = Color(0.372549, 0.372549, 0.952941, 1)
+[node name="window" type="Sprite2D" parent="."]
+position = Vector2(372, 1023)
+scale = Vector2(3.08594, 4.17187)
+texture = ExtResource("6_41a4t")
 
 [node name="Area2D" type="Area2D" parent="window"]
 script = ExtResource("3_8aq68")
 object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Окно в лабораторию.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="window/Area2D"]
-position = Vector2(8, 340)
+position = Vector2(4.12404, 1.31836)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_shmvk")
 
 [node name="valve" type="StaticBody2D" parent="."]
 position = Vector2(1, -1)
 
-[node name="ColorRect" type="ColorRect" parent="valve"]
-offset_left = 422.0
-offset_top = 504.0
-offset_right = 443.0
-offset_bottom = 559.0
-color = Color(1, 1, 0, 1)
+[node name="ColorRect" type="Sprite2D" parent="valve"]
+position = Vector2(455.313, 527.188)
+scale = Vector2(1.79436, 1.79436)
+texture = ExtResource("6_2c403")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="valve"]
+position = Vector2(-984.666, -55.5881)
+scale = Vector2(3.33333, 1.09659)
 polygon = PackedVector2Array(422, 559, 443, 559, 443, 504, 422, 504)
+
+[node name="Area2D" type="Area2D" parent="valve"]
+script = ExtResource("3_8aq68")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Вентиль.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="valve/Area2D"]
+position = Vector2(459, 529)
+shape = SubResource("RectangleShape2D_2c403")
 
 [node name="door (K-2)" parent="." instance=ExtResource("2_ojkg2")]
 position = Vector2(603, 239)
@@ -132,13 +143,6 @@ object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2 sign/Area2D"]
 position = Vector2(-17, 1)
 polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
-
-[node name="enemy" parent="." instance=ExtResource("10_2c403")]
-position = Vector2(664, 589)
-
-[node name="enemy2" parent="." instance=ExtResource("10_2c403")]
-position = Vector2(780, 548)
-enemy_id = 1
 
 [node name="Player" parent="." instance=ExtResource("1_uyy6p")]
 position = Vector2(632, 316)

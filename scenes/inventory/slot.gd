@@ -10,3 +10,4 @@ func update(item:InventoryItem):
 		background_sprite.frame=1
 		itemSprite.visible=true
 		itemSprite.texture=item.texture
+		

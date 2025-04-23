@@ -13,6 +13,12 @@
 		"res://assets/dialogues/Лаборатория (Kоридор-1)/Лаборатория.json": "false",
 		"res://assets/dialogues/Лаборатория (Kоридор-1)/Окно в лабораторию.json": "false",
 		"res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (R-1).json": "false",
-		"res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (К-2).json": "false"
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (К-2).json": "false",
+		"res://assets/dialogues/Лаборатория (Kоридор-1)/Вентиль.json": "false",
+		"res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Лаборатория (Покрытая Кристаллами).json":"false",
+		"res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Кристальная стена на пути к входу в R-1.json":"false",
+		"res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Кристальная стена.json":"false",
+		"res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Осколок кристалла.json":"false",
+		"res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Труба.json":"false"
 	}
 ]

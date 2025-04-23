@@ -1,6 +1,5 @@
 extends CharacterBody2D
 @export var speed=200
-@export var hp = 100
 @export var limit_left = -10000000
 @export var limit_top = -10000000
 @export var limit_right = 10000000
@@ -89,9 +88,9 @@ func _physics_process(delta):
 	
 	enemy_attack(10)
 	
-	if hp<=0:
+	if global.current_player_hp<=0:
 		alive = false #добавить экран смерти
-		hp = 0
+		global.current_player_hp = 0
 		print("Player's dead")
 		self.queue_free() #убрать позднее, просто удаляет узел из сцены
 
@@ -109,11 +108,11 @@ func _on_player_hitbox_body_exited(body: CharacterBody2D) -> void:
 
 func enemy_attack(damage: int):
 	if enemy_in_range and enemy_attack_cooldown:
-		hp = hp - damage
+		global.current_player_hp -= damage
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		
-		print(hp)
+		print(global.current_player_hp)
 
 func player():
 	pass
@@ -134,9 +133,9 @@ func _on_deal_attack_timer_timeout() -> void:
 
 func update_health():
 	var healthbar = $HealthBar
-	healthbar.value = hp
+	healthbar.value = global.current_player_hp
 	
-	if hp >= 100:
+	if global.current_player_hp >= 100:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
@@ -147,12 +146,12 @@ func update_health():
 		
 
 func _on_regen_timer_timeout() -> void:
-	if hp < 100 and alive and regen:
-		hp+=20
+	if global.current_player_hp < 100 and alive and regen:
+		global.current_player_hp+=20
 		
-		if hp>100:
-			hp=100
+		if global.current_player_hp>100:
+			global.current_player_hp=100
 			$regen_timer.stop()
 			regen = false
-		print("Healed player + 20 hp, current HP: ",hp)
+		print("Healed player + 20 hp, current HP: ",global.current_player_hp)
 	

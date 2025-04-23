@@ -10,3 +10,8 @@ func _input(event):
 
 func _on_item_area_2d_take_item(item: Variant) -> void:
 	$InvPanel.on_take_item(item)
+
+func is_item_here(item_name:String):
+	return $InvPanel.is_item_here(item_name)
+func remove_item(item_name:String):
+	$InvPanel.remove_item(item_name)

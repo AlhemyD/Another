@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://b5amgupbc67sb" path="res://scenes/inventory/inv_panel.gd" id="2_16qgo"]
 
 [node name="Inventory" type="CanvasLayer"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 script = ExtResource("1_sug5e")
 
 [node name="InvPanel" type="Panel" parent="."]

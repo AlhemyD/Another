@@ -12,7 +12,10 @@ func _on_body_exited(body: CharacterBody2D) -> void:
 	player_in_area = false
 	
 func _on_interact():
-	get_tree().change_scene_to_file(scene)
+	if scene=="res://scenes/K-1/K-1.tscn" and global.load_file("res://assets/dialogues/flags.json")[0]["res://assets/dialogues/Лаборатория (Kоридор-1)/Вентиль.json"]!="false":
+		get_tree().change_scene_to_file("res://scenes/K-1 (crystal)/K-1 (crystal).tscn")
+	else:
+		get_tree().change_scene_to_file(scene)
 	
 var change_door=false
 var used_dialogue=false

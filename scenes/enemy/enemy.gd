@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var hp = 100
+#@export var hp = 100
 @export var speed = 100
 var player_chase = false
 var player = null
@@ -13,6 +13,8 @@ var can_take_damage = true
 var attack_in_progress = false
 
 func _ready() -> void:
+	if enemy_id not in global.enemies_hp:
+		global.enemies_hp[enemy_id]=100
 	if enemy_id in global.enemies_slain:
 		self.queue_free()
 
@@ -66,12 +68,12 @@ func _on_enemy_hitbox_body_exited(body: CharacterBody2D) -> void:
 		
 func deal_with_damage():
 	if player_in_range and global.player_current_attack and can_take_damage:
-		hp-=global.player_current_damage
+		global.enemies_hp[enemy_id]-=global.player_current_damage
 		global.player_current_attack=false
-		print("enemy was damaged. Current hp: ",hp)
+		print("enemy was damaged. Current hp: ",global.enemies_hp[enemy_id])
 		$take_damage_cooldown.start()
 		can_take_damage=false
-		if hp<=0:
+		if global.enemies_hp[enemy_id]<=0:
 			dead = true
 			global.enemies_slain.append(enemy_id)
 			print("enemy ",enemy_id," slain")
@@ -79,8 +81,8 @@ func deal_with_damage():
 
 func update_health():
 	var healthbar = $HealthBar
-	healthbar.value = hp	
-	if hp >= 100:
+	healthbar.value = global.enemies_hp[enemy_id]	
+	if global.enemies_hp[enemy_id] >= 100:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vc1mrb5eg6uh"]
+[gd_scene load_steps=15 format=3 uid="uid://vc1mrb5eg6uh"]
 
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_y2c4m"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_ylbfd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bdfxva1go16v1" path="res://assets/static_objects/Floor.png" id="2_jttfa"]
 [ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="3_i8hbe"]
 [ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="3_s2bv3"]
+[ext_resource type="Texture2D" uid="uid://bm78xpbswnwhr" path="res://assets/static_objects/lattice.png" id="5_y0744"]
 [ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="6_julng"]
 [ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="7_hnset"]
 [ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="7_jydws"]
@@ -65,14 +66,11 @@ position = Vector2(198, -38)
 [node name="bars" type="StaticBody2D" parent="."]
 position = Vector2(198, 528)
 scale = Vector2(0.438877, 0.687037)
-metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="bars"]
-offset_left = 510.0
-offset_top = 530.0
-offset_right = 1604.0
-offset_bottom = 622.0
-color = Color(0.258824, 0, 1, 1)
+[node name="ColorRect" type="Sprite2D" parent="bars"]
+position = Vector2(1057.24, 576.388)
+scale = Vector2(8.54453, 2.16636)
+texture = ExtResource("5_y0744")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bars"]
 polygon = PackedVector2Array(510.394, 529.811, 510.394, 622.965, 1604.1, 621.509, 1604.1, 529.811)

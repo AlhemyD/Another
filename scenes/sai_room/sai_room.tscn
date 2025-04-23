@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m6nj4ifhlr17"]
+[gd_scene load_steps=16 format=3 uid="uid://m6nj4ifhlr17"]
 
 [ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="1_7fybd"]
 [ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="1_lykhb"]
@@ -7,17 +7,35 @@
 [ext_resource type="PackedScene" uid="uid://bw560impcvkb7" path="res://scenes/MRI/mri.tscn" id="2_v8cs4"]
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="3_h7g21"]
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="4_aiq34"]
-[ext_resource type="PackedScene" uid="uid://2u5fuw2d2iq8" path="res://scenes/inventory/item.tscn" id="5_8xfq5"]
-[ext_resource type="Resource" uid="uid://calekgrai3ada" path="res://resources/testing_bulb(Nightmargin).tres" id="6_62ld0"]
-[ext_resource type="Resource" uid="uid://dsdm8qwjjv44x" path="res://resources/LightningBulb.tres" id="7_b4wbe"]
+[ext_resource type="Texture2D" uid="uid://sbsismksugfk" path="res://assets/animations/sleeping_enemy_animation/Sleeping_enemy1.png" id="4_y2u7v"]
+[ext_resource type="Texture2D" uid="uid://csbanef5vcrhj" path="res://assets/animations/sleeping_enemy_animation/Sleeping_enemy2.png" id="5_wsdqq"]
+[ext_resource type="Texture2D" uid="uid://d1uusw26h2pia" path="res://assets/animations/sleeping_enemy_animation/Sleeping_enemy3.png" id="6_rsfvt"]
+[ext_resource type="Script" uid="uid://cout30745mkt7" path="res://scenes/sign_up/sign_up.gd" id="7_wsdqq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ecdlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7flgx"]
-size = Vector2(72, 77)
+size = Vector2(158, 111)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62nnj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y2u7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wsdqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rsfvt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wflty"]
-size = Vector2(91, 97)
+size = Vector2(75.3846, 54.2769)
 
 [node name="Node" type="Node"]
 
@@ -60,22 +78,23 @@ color = Color(0.147672, 0.147672, 0.147672, 1)
 [node name="guard" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="guard"]
-position = Vector2(733, 496.5)
+position = Vector2(697, 498.5)
 shape = SubResource("RectangleShape2D_7flgx")
 
-[node name="ColorRect" type="ColorRect" parent="guard"]
-offset_left = 697.0
-offset_top = 458.0
-offset_right = 769.0
-offset_bottom = 535.0
-color = Color(0.904812, 0.663969, 0.425321, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="guard"]
+position = Vector2(704.5, 490)
+scale = Vector2(2.32143, 2.32143)
+sprite_frames = SubResource("SpriteFrames_62nnj")
+frame_progress = 0.263695
+script = ExtResource("7_wsdqq")
 
-[node name="Area2D" type="Area2D" parent="guard/ColorRect"]
+[node name="Area2D" type="Area2D" parent="guard/AnimatedSprite2D"]
+position = Vector2(-7, -1)
 script = ExtResource("1_7fybd")
 object_d_file = "res://assets/dialogues/Комната Сая/Стол с охранником.json"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="guard/ColorRect/Area2D"]
-position = Vector2(35.5, 38.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="guard/AnimatedSprite2D/Area2D"]
+position = Vector2(3.98465, 4.44617)
 shape = SubResource("RectangleShape2D_wflty")
 
 [node name="door (K-2)" parent="." instance=ExtResource("2_mmp4u")]
@@ -92,20 +111,9 @@ polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.0001
 
 [node name="Inventory" parent="." instance=ExtResource("4_aiq34")]
 
-[node name="Item (Area2D)" parent="." instance=ExtResource("5_8xfq5")]
-position = Vector2(518, 321)
-item = ExtResource("6_62ld0")
-
-[node name="Item (Area2D)2" parent="." instance=ExtResource("5_8xfq5")]
-position = Vector2(391, 314)
-item = ExtResource("7_b4wbe")
-
 [node name="Player" parent="." instance=ExtResource("1_lykhb")]
 position = Vector2(379, 210)
 limit_left = 180
 limit_top = -3
 limit_right = 890
 limit_bottom = 655
-
-[connection signal="take_item" from="Item (Area2D)" to="Inventory" method="_on_item_area_2d_take_item"]
-[connection signal="take_item" from="Item (Area2D)2" to="Inventory" method="_on_item_area_2d_take_item"]

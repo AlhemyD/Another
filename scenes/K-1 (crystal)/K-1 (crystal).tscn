@@ -1,0 +1,205 @@
+[gd_scene load_steps=23 format=3 uid="uid://sjeu15wi88g5"]
+
+[ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_34ta6"]
+[ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="2_i4toj"]
+[ext_resource type="Texture2D" uid="uid://bdfxva1go16v1" path="res://assets/static_objects/Floor.png" id="3_iegif"]
+[ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="4_f0phi"]
+[ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="5_hvp06"]
+[ext_resource type="Texture2D" uid="uid://cmarc7rudjhk" path="res://assets/static_objects/window_horizontal.png" id="6_iegif"]
+[ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="6_w3yox"]
+[ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="7_dwujt"]
+[ext_resource type="Script" uid="uid://bauj4a36krdjy" path="res://scenes/global/removable_objects.gd" id="7_w3yox"]
+[ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="8_lwdob"]
+[ext_resource type="Texture2D" uid="uid://pquacjn8w2ci" path="res://assets/static_objects/Crystal wall.png" id="9_hvp06"]
+[ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="9_yay3g"]
+[ext_resource type="PackedScene" uid="uid://2u5fuw2d2iq8" path="res://scenes/inventory/item.tscn" id="11_i4toj"]
+[ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="11_ygh2d"]
+[ext_resource type="Resource" uid="uid://bimmqi8b3mnhb" path="res://resources/pipe.tres" id="12_iegif"]
+[ext_resource type="Resource" uid="uid://cdfgpw28hun6c" path="res://resources/crystal.tres" id="14_w3yox"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1mt1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0phi"]
+size = Vector2(34.5266, 130.637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34ta6"]
+size = Vector2(489, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4toj"]
+size = Vector2(488, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nydir"]
+size = Vector2(181, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwujt"]
+size = Vector2(197, 81)
+
+[node name="Node" type="Node"]
+
+[node name="DialogueBox" parent="." instance=ExtResource("1_34ta6")]
+d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Лаборатория (Покрытая Кристаллами).json"
+
+[node name="overworld" type="ColorRect" parent="."]
+offset_left = -364.0
+offset_top = -203.0
+offset_right = 1936.0
+offset_bottom = 2102.0
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(657.5, 198)
+scale = Vector2(4.10156, 0.8125)
+texture = ExtResource("2_i4toj")
+
+[node name="K-1" type="StaticBody2D" parent="."]
+position = Vector2(122, 232)
+physics_material_override = SubResource("PhysicsMaterial_1mt1a")
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-1"]
+build_mode = 1
+polygon = PackedVector2Array(300, 17, 300, 1284, 780, 1284, 780, 17)
+
+[node name="wallpaper" type="ColorRect" parent="K-1"]
+offset_left = 300.0
+offset_top = 17.0
+offset_right = 780.0
+offset_bottom = 1284.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="K-1"]
+position = Vector2(543, 650.5)
+scale = Vector2(3.32813, 4.68359)
+texture = ExtResource("3_iegif")
+
+[node name="R-1 sign" parent="." instance=ExtResource("4_f0phi")]
+position = Vector2(697, 1516)
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="R-1 sign"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (R-1).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="R-1 sign/Area2D"]
+position = Vector2(-16, -5.91856e-05)
+polygon = PackedVector2Array(0, 0, 32, 0, 16, -4.36365)
+
+[node name="window" type="Sprite2D" parent="."]
+position = Vector2(372, 1023)
+scale = Vector2(3.08594, 4.17187)
+texture = ExtResource("6_iegif")
+
+[node name="Area2D" type="Area2D" parent="window"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Окно в лабораторию.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window/Area2D"]
+position = Vector2(4.12404, 1.31836)
+shape = SubResource("RectangleShape2D_f0phi")
+
+[node name="crystal_wall" type="StaticBody2D" parent="."]
+position = Vector2(483, 766)
+script = ExtResource("7_w3yox")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="crystal_wall"]
+offset_left = -61.0
+offset_top = 34.0
+offset_right = 419.0
+offset_bottom = 76.0
+color = Color(0.0411727, 0.088386, 0.53556, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crystal_wall"]
+position = Vector2(179.5, 54.5)
+shape = SubResource("RectangleShape2D_34ta6")
+
+[node name="Area2D" type="Area2D" parent="crystal_wall"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Кристальная стена.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crystal_wall/Area2D"]
+position = Vector2(181, 35.5)
+shape = SubResource("RectangleShape2D_i4toj")
+
+[node name="door (K-2)" parent="." instance=ExtResource("6_w3yox")]
+position = Vector2(603, 239)
+scene = "res://scenes/K-2/K-2 (copy).tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="door (K-2)"]
+position = Vector2(29.625, -39.75)
+scale = Vector2(0.59949, 0.497449)
+texture = ExtResource("7_dwujt")
+
+[node name="door (R-1)" parent="." instance=ExtResource("6_w3yox")]
+position = Vector2(658, 1516)
+rotation = 3.14159
+scene = "res://scenes/K-2/K-2.tscn"
+closed = true
+
+[node name="Area2D" type="Area2D" parent="door (R-1)"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Запертая дверь R-1.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door (R-1)/Area2D"]
+polygon = PackedVector2Array(59, 9.00024, 59, 0.000244141, 0, 0, 0, 9, 27.9999, 18.0001)
+
+[node name="crystal_wall_" type="StaticBody2D" parent="."]
+position = Vector2(479, 1388)
+script = ExtResource("7_w3yox")
+id = 1
+
+[node name="ColorRect" type="Sprite2D" parent="crystal_wall_"]
+position = Vector2(176, 115)
+scale = Vector2(1.20313, 1.20313)
+texture = ExtResource("9_hvp06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crystal_wall_"]
+position = Vector2(167.5, 123)
+shape = SubResource("RectangleShape2D_nydir")
+
+[node name="Area2D" type="Area2D" parent="crystal_wall_"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Кристальная стена на пути к входу в R-1.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crystal_wall_/Area2D"]
+position = Vector2(170.5, 122.5)
+shape = SubResource("RectangleShape2D_dwujt")
+
+[node name="Inventory" parent="." instance=ExtResource("8_lwdob")]
+
+[node name="K-2 sign" type="Sprite2D" parent="."]
+position = Vector2(568, 182)
+scale = Vector2(1.79688, 2.3125)
+texture = ExtResource("9_yay3g")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="K-2 sign"]
+script = ExtResource("5_hvp06")
+object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Табличка с надписью (К-2).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2 sign/Area2D"]
+position = Vector2(-17, 1)
+polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
+
+[node name="pipe" parent="." instance=ExtResource("11_i4toj")]
+position = Vector2(657, 643)
+item = ExtResource("12_iegif")
+object_d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Труба.json"
+
+[node name="crystal" parent="." instance=ExtResource("11_i4toj")]
+visible = false
+position = Vector2(664, 895)
+scale = Vector2(0.3, 0.3)
+item = ExtResource("14_w3yox")
+id = 1
+object_d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Осколок кристалла.json"
+
+[node name="Player" parent="." instance=ExtResource("11_ygh2d")]
+position = Vector2(531, 592)
+limit_left = 329
+limit_top = 99
+limit_right = 986
+limit_bottom = 1564
+
+[connection signal="take_item" from="pipe" to="Inventory" method="_on_item_area_2d_take_item"]
+[connection signal="take_item" from="crystal" to="Inventory" method="_on_item_area_2d_take_item"]

@@ -1,0 +1,34 @@
+[
+{
+	"name":"Сай (мысли)",
+	"text":"Хм. Почему эта штука торчит из стены?",
+	"reaction":"question"
+},
+{
+	"name":" ",
+	"text":"*Скрип* *Скрип*",
+	"reaction":" "
+},
+{
+	"name":"Сай (мысли)",
+	"text":"Что это за скрип?",
+	"reaction":"question"
+},
+{
+	"name":" ",
+	"text":"*Скрип* *Скрип* *Скрип*",
+	"reaction":" "
+},
+{
+	"name":"Сай",
+	"text":"Аргх!",
+	"reaction":"surprised",
+	"hp":"10"
+},
+{
+	"name":" ",
+	"text":"*Шипение*",
+	"reaction":" ",
+	"change_scene":"res://scenes/K-1 (crystal)/K-1 (crystal).tscn"
+}
+]

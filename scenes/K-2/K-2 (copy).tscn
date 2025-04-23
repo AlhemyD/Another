@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://bj0fvc75dd8fp"]
+
+[ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_l0gjf"]
+[ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="2_ns8al"]
+[ext_resource type="Texture2D" uid="uid://bdfxva1go16v1" path="res://assets/static_objects/Floor.png" id="3_tfg0i"]
+[ext_resource type="PackedScene" uid="uid://81h4c3yytnwf" path="res://scenes/closed_door/closed_door.tscn" id="4_6e8fd"]
+[ext_resource type="Texture2D" uid="uid://bm78xpbswnwhr" path="res://assets/static_objects/lattice.png" id="5_f77rq"]
+[ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="6_jhc5u"]
+[ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="7_0cuh0"]
+[ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="8_3p5yb"]
+[ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="9_j1cl8"]
+[ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="10_2negu"]
+[ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="11_irqet"]
+[ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="12_d241v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f1gjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to7ln"]
+size = Vector2(1095.98, 62.5877)
+
+[node name="Node" type="Node"]
+
+[node name="DialogueBox" parent="." instance=ExtResource("1_l0gjf")]
+
+[node name="overworld" type="ColorRect" parent="."]
+offset_left = -347.0
+offset_top = -678.0
+offset_right = 1954.0
+offset_bottom = 2056.0
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(657.5, 198)
+scale = Vector2(4.10156, 0.8125)
+texture = ExtResource("2_ns8al")
+
+[node name="K-2" type="StaticBody2D" parent="."]
+position = Vector2(122, 232)
+physics_material_override = SubResource("PhysicsMaterial_f1gjm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-2"]
+build_mode = 1
+polygon = PackedVector2Array(300, 17, 300, 1284, 780, 1284, 780, 17)
+
+[node name="wallpaper" type="ColorRect" parent="K-2"]
+offset_left = 300.0
+offset_top = 17.0
+offset_right = 780.0
+offset_bottom = 1284.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="K-2"]
+position = Vector2(543, 650.5)
+scale = Vector2(3.32813, 4.68359)
+texture = ExtResource("3_tfg0i")
+
+[node name="closed_door3" parent="." instance=ExtResource("4_6e8fd")]
+position = Vector2(198, 367)
+
+[node name="closed_door2" parent="." instance=ExtResource("4_6e8fd")]
+position = Vector2(198, 110)
+
+[node name="closed_door" parent="." instance=ExtResource("4_6e8fd")]
+position = Vector2(198, -38)
+
+[node name="bars" type="StaticBody2D" parent="."]
+position = Vector2(198, 528)
+scale = Vector2(0.438877, 0.687037)
+
+[node name="ColorRect" type="Sprite2D" parent="bars"]
+position = Vector2(1057.24, 576.388)
+scale = Vector2(8.54453, 2.16636)
+texture = ExtResource("5_f77rq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bars"]
+polygon = PackedVector2Array(510.394, 529.811, 510.394, 622.965, 1604.1, 621.509, 1604.1, 529.811)
+
+[node name="Area2D" type="Area2D" parent="bars"]
+script = ExtResource("6_jhc5u")
+object_d_file = "res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Решётка.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bars/Area2D"]
+position = Vector2(1058.38, 546.55)
+shape = SubResource("RectangleShape2D_to7ln")
+
+[node name="K-1 sign" type="Sprite2D" parent="."]
+position = Vector2(568, 182)
+scale = Vector2(1.79688, 2.3125)
+texture = ExtResource("7_0cuh0")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="K-1 sign"]
+script = ExtResource("6_jhc5u")
+object_d_file = "res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Табличка с надписью (К-1).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-1 sign/Area2D"]
+position = Vector2(-17, 1)
+polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
+
+[node name="КПП sign" type="ColorRect" parent="."]
+offset_left = 551.0
+offset_top = 1516.0
+offset_right = 580.0
+offset_bottom = 1523.0
+color = Color(0.458824, 0.454902, 1, 1)
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("8_3p5yb")]
+
+[node name="door (Sai_room)" parent="." instance=ExtResource("9_j1cl8")]
+position = Vector2(422, 684)
+rotation = -1.5708
+scene = "res://scenes/sai_room/sai_room.tscn"
+closed = true
+
+[node name="Area2D" type="Area2D" parent="door (Sai_room)"]
+script = ExtResource("6_jhc5u")
+object_d_file = "res://assets/dialogues/Отдел по выявлению неполадок (Kоридор-2)/Дверь комнаты Сая.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door (Sai_room)/Area2D"]
+polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.00018, 59, 0.000183105)
+
+[node name="door (K-1)" parent="." instance=ExtResource("9_j1cl8")]
+position = Vector2(605, 240)
+scene = "res://scenes/K-1 (crystal)/K-1 (crystal).tscn"
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="door (K-1)"]
+position = Vector2(29.625, -39.75)
+scale = Vector2(0.59949, 0.497449)
+texture = ExtResource("10_2negu")
+
+[node name="door (КПП)" parent="." instance=ExtResource("9_j1cl8")]
+position = Vector2(658, 1516)
+rotation = 3.14159
+scene = "res://scenes/K-1/K-1.tscn"
+
+[node name="closed_door4" parent="." instance=ExtResource("4_6e8fd")]
+position = Vector2(198, 678)
+
+[node name="closed_door5" parent="." instance=ExtResource("4_6e8fd")]
+position = Vector2(198, 876)
+
+[node name="Inventory" parent="." instance=ExtResource("11_irqet")]
+
+[node name="Player" parent="." instance=ExtResource("12_d241v")]
+position = Vector2(638, 272)
+limit_left = 329
+limit_top = 99
+limit_right = 986
+limit_bottom = 1564

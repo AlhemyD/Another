@@ -25,3 +25,14 @@ func on_take_item(item:Variant) -> void:
 			_update_item(i,item)
 			
 			break
+
+func is_item_here(item_name:String):
+	for i in range(inventory.items.size()):
+		if inventory.items[i] and inventory.items[i].name==item_name:
+			return true
+	return false
+func remove_item(item_name:String) -> void:
+	for i in range(inventory.items.size()):
+		if inventory.items[i] and inventory.items[i].name==item_name:
+			_update_item(i,null)
+			return
