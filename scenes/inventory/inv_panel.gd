@@ -36,3 +36,6 @@ func remove_item(item_name:String) -> void:
 		if inventory.items[i] and inventory.items[i].name==item_name:
 			_update_item(i,null)
 			return
+func give_item(item_name:String) -> void:
+	var item = load("res://resources/"+item_name)
+	on_take_item(item)

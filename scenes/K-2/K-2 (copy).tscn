@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bj0fvc75dd8fp"]
+[gd_scene load_steps=16 format=3 uid="uid://bj0fvc75dd8fp"]
 
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_l0gjf"]
 [ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="2_ns8al"]
 [ext_resource type="Texture2D" uid="uid://bdfxva1go16v1" path="res://assets/static_objects/Floor.png" id="3_tfg0i"]
 [ext_resource type="PackedScene" uid="uid://81h4c3yytnwf" path="res://scenes/closed_door/closed_door.tscn" id="4_6e8fd"]
 [ext_resource type="Texture2D" uid="uid://bm78xpbswnwhr" path="res://assets/static_objects/lattice.png" id="5_f77rq"]
+[ext_resource type="Script" uid="uid://bauj4a36krdjy" path="res://scenes/global/removable_objects.gd" id="5_ns8al"]
 [ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="6_jhc5u"]
 [ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="7_0cuh0"]
 [ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="8_3p5yb"]
@@ -66,6 +67,8 @@ position = Vector2(198, -38)
 [node name="bars" type="StaticBody2D" parent="."]
 position = Vector2(198, 528)
 scale = Vector2(0.438877, 0.687037)
+script = ExtResource("5_ns8al")
+id = 3
 
 [node name="ColorRect" type="Sprite2D" parent="bars"]
 position = Vector2(1057.24, 576.388)
@@ -97,13 +100,6 @@ object_d_file = "res://assets/dialogues/Отдел по выявлению не�
 position = Vector2(-17, 1)
 polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
 
-[node name="КПП sign" type="ColorRect" parent="."]
-offset_left = 551.0
-offset_top = 1516.0
-offset_right = 580.0
-offset_bottom = 1523.0
-color = Color(0.458824, 0.454902, 1, 1)
-
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("8_3p5yb")]
 
 [node name="door (Sai_room)" parent="." instance=ExtResource("9_j1cl8")]
@@ -122,6 +118,9 @@ polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.0001
 [node name="door (K-1)" parent="." instance=ExtResource("9_j1cl8")]
 position = Vector2(605, 240)
 scene = "res://scenes/K-1 (crystal)/K-1 (crystal).tscn"
+player_x = 637.0
+player_y = 244.0
+side = "down"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="door (K-1)"]
@@ -133,6 +132,7 @@ texture = ExtResource("10_2negu")
 position = Vector2(658, 1516)
 rotation = 3.14159
 scene = "res://scenes/K-1/K-1.tscn"
+closed = true
 
 [node name="closed_door4" parent="." instance=ExtResource("4_6e8fd")]
 position = Vector2(198, 678)

@@ -82,7 +82,6 @@ object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="window/Area2D"]
 position = Vector2(4.12404, 1.31836)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_shmvk")
 
 [node name="valve" type="StaticBody2D" parent="."]
@@ -109,6 +108,9 @@ shape = SubResource("RectangleShape2D_2c403")
 [node name="door (K-2)" parent="." instance=ExtResource("2_ojkg2")]
 position = Vector2(603, 239)
 scene = "res://scenes/K-2/K-2.tscn"
+player_x = 637.0
+player_y = 233.0
+side = "down"
 
 [node name="Sprite2D" type="Sprite2D" parent="door (K-2)"]
 position = Vector2(29.625, -39.75)
@@ -145,7 +147,7 @@ position = Vector2(-17, 1)
 polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
 
 [node name="Player" parent="." instance=ExtResource("1_uyy6p")]
-position = Vector2(632, 316)
+position = Vector2(637, 244)
 limit_left = 329
 limit_top = 99
 limit_right = 986

@@ -97,13 +97,6 @@ object_d_file = "res://assets/dialogues/Отдел по выявлению не�
 position = Vector2(-17, 1)
 polygon = PackedVector2Array(1.41739, 33.1622, 32.026, 33.5946, 33, 7, 1.3902, 7)
 
-[node name="КПП sign" type="ColorRect" parent="."]
-offset_left = 551.0
-offset_top = 1516.0
-offset_right = 580.0
-offset_bottom = 1523.0
-color = Color(0.458824, 0.454902, 1, 1)
-
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("7_jydws")]
 
 [node name="door (Sai_room)" parent="." instance=ExtResource("2_64sh4")]
@@ -122,6 +115,9 @@ polygon = PackedVector2Array(0, 0, -6.10352e-05, 9, 27.9999, 18.0001, 59, 9.0001
 [node name="door (K-1)" parent="." instance=ExtResource("2_64sh4")]
 position = Vector2(605, 240)
 scene = "res://scenes/K-1/K-1.tscn"
+player_x = 637.0
+player_y = 244.0
+side = "down"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="door (K-1)"]
@@ -133,6 +129,7 @@ texture = ExtResource("7_hnset")
 position = Vector2(658, 1516)
 rotation = 3.14159
 scene = "res://scenes/K-1/K-1.tscn"
+closed = true
 
 [node name="closed_door4" parent="." instance=ExtResource("2_gq1pk")]
 position = Vector2(198, 678)
@@ -143,8 +140,9 @@ position = Vector2(198, 876)
 [node name="Inventory" parent="." instance=ExtResource("2_aisp7")]
 
 [node name="Player" parent="." instance=ExtResource("1_y2c4m")]
-position = Vector2(493, 623)
+position = Vector2(637, 233)
 limit_left = 329
 limit_top = 99
 limit_right = 986
 limit_bottom = 1564
+side = "right"

@@ -10,6 +10,10 @@ var player_current_damage = 0
 var items_taken=[]
 var removed_objects=[]
 var visibled_objects=[]
+var player_x=null
+var player_y=null
+var side:String
+var given_items=[]
 func load_file(l_file):
 	var json=JSON.new()	
 	var file=FileAccess.open(l_file,FileAccess.READ)

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cdfgpw28hun6c"]
 
 [ext_resource type="Script" uid="uid://dah6ebrj6ckup" path="res://scenes/inventory/inventory_item.gd" id="1_7ro05"]
-[ext_resource type="Texture2D" uid="uid://c75rgw4ub1usa" path="res://assets/static_objects/Crystal.png" id="2_5hqu8"]
+[ext_resource type="Texture2D" uid="uid://dvhjmj4k3nug5" path="res://assets/static_objects/crystal-d.png" id="2_7ro05"]
 
 [resource]
 script = ExtResource("1_7ro05")
 name = "crystal"
-texture = ExtResource("2_5hqu8")
+texture = ExtResource("2_7ro05")

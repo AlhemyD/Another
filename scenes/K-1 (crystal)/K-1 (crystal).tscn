@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://sjeu15wi88g5"]
+[gd_scene load_steps=24 format=3 uid="uid://sjeu15wi88g5"]
 
 [ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_34ta6"]
 [ext_resource type="Texture2D" uid="uid://c3ssokqm6p2bv" path="res://assets/static_objects/Wall.png" id="2_i4toj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="6_w3yox"]
 [ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="7_dwujt"]
 [ext_resource type="Script" uid="uid://bauj4a36krdjy" path="res://scenes/global/removable_objects.gd" id="7_w3yox"]
+[ext_resource type="Texture2D" uid="uid://cdfesdbebe6ql" path="res://assets/static_objects/Crystal_wall_long.png" id="8_dwujt"]
 [ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="8_lwdob"]
 [ext_resource type="Texture2D" uid="uid://pquacjn8w2ci" path="res://assets/static_objects/Crystal wall.png" id="9_hvp06"]
 [ext_resource type="Texture2D" uid="uid://c1moogdguqwt6" path="res://assets/static_objects/Sign.png" id="9_yay3g"]
@@ -23,7 +24,7 @@
 size = Vector2(34.5266, 130.637)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34ta6"]
-size = Vector2(489, 53)
+size = Vector2(488, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4toj"]
 size = Vector2(488, 27)
@@ -100,17 +101,14 @@ shape = SubResource("RectangleShape2D_f0phi")
 [node name="crystal_wall" type="StaticBody2D" parent="."]
 position = Vector2(483, 766)
 script = ExtResource("7_w3yox")
-metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="crystal_wall"]
-offset_left = -61.0
-offset_top = 34.0
-offset_right = 419.0
-offset_bottom = 76.0
-color = Color(0.0411727, 0.088386, 0.53556, 1)
+[node name="ColorRect" type="Sprite2D" parent="crystal_wall"]
+position = Vector2(179, 57)
+scale = Vector2(1.51172, 1.51172)
+texture = ExtResource("8_dwujt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="crystal_wall"]
-position = Vector2(179.5, 54.5)
+position = Vector2(179, 69)
 shape = SubResource("RectangleShape2D_34ta6")
 
 [node name="Area2D" type="Area2D" parent="crystal_wall"]
@@ -121,11 +119,14 @@ object_d_file = "res://assets/dialogues/Лаборатория (Покрытая
 position = Vector2(181, 35.5)
 shape = SubResource("RectangleShape2D_i4toj")
 
-[node name="door (K-2)" parent="." instance=ExtResource("6_w3yox")]
+[node name="door (K-2) (copy)" parent="." instance=ExtResource("6_w3yox")]
 position = Vector2(603, 239)
 scene = "res://scenes/K-2/K-2 (copy).tscn"
+player_x = 637.0
+player_y = 233.0
+side = "down"
 
-[node name="Sprite2D" type="Sprite2D" parent="door (K-2)"]
+[node name="Sprite2D" type="Sprite2D" parent="door (K-2) (copy)"]
 position = Vector2(29.625, -39.75)
 scale = Vector2(0.59949, 0.497449)
 texture = ExtResource("7_dwujt")
@@ -133,15 +134,10 @@ texture = ExtResource("7_dwujt")
 [node name="door (R-1)" parent="." instance=ExtResource("6_w3yox")]
 position = Vector2(658, 1516)
 rotation = 3.14159
-scene = "res://scenes/K-2/K-2.tscn"
-closed = true
-
-[node name="Area2D" type="Area2D" parent="door (R-1)"]
-script = ExtResource("5_hvp06")
-object_d_file = "res://assets/dialogues/Лаборатория (Kоридор-1)/Запертая дверь R-1.json"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door (R-1)/Area2D"]
-polygon = PackedVector2Array(59, 9.00024, 59, 0.000244141, 0, 0, 0, 9, 27.9999, 18.0001)
+scene = "res://scenes/R-1/R-1.tscn"
+player_x = 1210.0
+player_y = 241.0
+side = "left"
 
 [node name="crystal_wall_" type="StaticBody2D" parent="."]
 position = Vector2(479, 1388)
@@ -189,13 +185,12 @@ object_d_file = "res://assets/dialogues/Лаборатория (Покрытая
 [node name="crystal" parent="." instance=ExtResource("11_i4toj")]
 visible = false
 position = Vector2(664, 895)
-scale = Vector2(0.3, 0.3)
 item = ExtResource("14_w3yox")
 id = 1
 object_d_file = "res://assets/dialogues/Лаборатория (Покрытая Кристаллами)/Осколок кристалла.json"
 
 [node name="Player" parent="." instance=ExtResource("11_ygh2d")]
-position = Vector2(531, 592)
+position = Vector2(514, 602)
 limit_left = 329
 limit_top = 99
 limit_right = 986

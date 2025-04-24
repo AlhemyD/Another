@@ -1,0 +1,221 @@
+[gd_scene load_steps=22 format=3 uid="uid://cxp5da117crmq"]
+
+[ext_resource type="PackedScene" uid="uid://bk0pfsyk7lq3q" path="res://scenes/dialogue_box/dialogue_box.tscn" id="1_jxh67"]
+[ext_resource type="Texture2D" uid="uid://5x6vvns607b3" path="res://assets/static_objects/Enemy_down (crystal).png" id="3_a03sy"]
+[ext_resource type="Texture2D" uid="uid://bdfxva1go16v1" path="res://assets/static_objects/Floor.png" id="3_xhpw3"]
+[ext_resource type="PackedScene" uid="uid://ds18suapeyy2l" path="res://scenes/sign_up/sign_up.tscn" id="4_dqsno"]
+[ext_resource type="Script" uid="uid://cyyndefv3cfiu" path="res://scenes/dialogue_box/object.gd" id="5_4cw1o"]
+[ext_resource type="Texture2D" uid="uid://cmarc7rudjhk" path="res://assets/static_objects/window_horizontal.png" id="6_6gfdk"]
+[ext_resource type="Script" uid="uid://bauj4a36krdjy" path="res://scenes/global/removable_objects.gd" id="7_ev2xa"]
+[ext_resource type="PackedScene" uid="uid://bqe4li1wg8wwu" path="res://scenes/door/door.tscn" id="9_4ms4d"]
+[ext_resource type="Texture2D" uid="uid://08u1hqi5hgtv" path="res://assets/static_objects/Box.png" id="9_10xn1"]
+[ext_resource type="Texture2D" uid="uid://d30h27dqiaphk" path="res://assets/static_objects/door.png" id="10_c8xuh"]
+[ext_resource type="PackedScene" uid="uid://oj2llbhpbppp" path="res://scenes/enemy/enemy.tscn" id="11_10xn1"]
+[ext_resource type="PackedScene" uid="uid://jpj7klereh7j" path="res://scenes/inventory/inventory.tscn" id="12_dn6qa"]
+[ext_resource type="Texture2D" uid="uid://dc86pabiirayg" path="res://assets/static_objects/button.png" id="12_w0yiu"]
+[ext_resource type="Script" uid="uid://dnx1waf5oy4w6" path="res://scenes/global/visiblable_objects.gd" id="13_4uikv"]
+[ext_resource type="PackedScene" uid="uid://dv4w0qns8khpn" path="res://scenes/player/player.tscn" id="17_if77x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3qipe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxyyt"]
+size = Vector2(40.8649, 48.1622)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a03sy"]
+size = Vector2(36.973, 45.2432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71171"]
+size = Vector2(45.4518, 130.637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqncm"]
+size = Vector2(97, 482)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uikv"]
+size = Vector2(9.47368, 41.579)
+
+[node name="Node" type="Node"]
+
+[node name="DialogueBox" parent="." instance=ExtResource("1_jxh67")]
+d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Отдел по роботизации трудовых процессов (R-1).json"
+
+[node name="overworld" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = -1.078
+anchor_right = 0.015
+anchor_bottom = -1.078
+offset_left = -592.2
+offset_top = 40.16
+offset_right = 1707.8
+offset_bottom = 2345.16
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="R-1" type="StaticBody2D" parent="."]
+position = Vector2(-16, 783.691)
+rotation = -1.57168
+physics_material_override = SubResource("PhysicsMaterial_3qipe")
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="R-1"]
+build_mode = 1
+polygon = PackedVector2Array(300, 17, 300, 1284, 780, 1284, 780, 17)
+
+[node name="wallpaper" type="ColorRect" parent="R-1"]
+offset_left = 300.0
+offset_top = 17.0
+offset_right = 780.0
+offset_bottom = 1284.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="R-1"]
+position = Vector2(543, 650.5)
+scale = Vector2(3.32813, 4.68359)
+texture = ExtResource("3_xhpw3")
+
+[node name="enemy (crystal)" type="StaticBody2D" parent="."]
+position = Vector2(1196, 47)
+scale = Vector2(2.05556, 2.05556)
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy (crystal)"]
+texture = ExtResource("3_a03sy")
+
+[node name="Area2D" type="Area2D" parent="enemy (crystal)"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Охранник покрытый кристаллами.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy (crystal)/Area2D"]
+position = Vector2(-6.10352e-05, 0.243237)
+shape = SubResource("RectangleShape2D_hxyyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy (crystal)"]
+position = Vector2(-6.10352e-05, 0.243233)
+shape = SubResource("RectangleShape2D_a03sy")
+
+[node name="K-1 sign" parent="." instance=ExtResource("4_dqsno")]
+position = Vector2(1268, 328)
+rotation = 4.71239
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="K-1 sign"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Табличка с надписью (K-1).json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K-1 sign/Area2D"]
+position = Vector2(-16, -5.91856e-05)
+polygon = PackedVector2Array(0, 0, 32, 0, 16, -4.36365)
+
+[node name="window" type="Sprite2D" parent="."]
+position = Vector2(656, -32)
+rotation = 1.5708
+scale = Vector2(1.98065, 2.67764)
+texture = ExtResource("6_6gfdk")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="window"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Окно с видом на производство имплантатов.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window/Area2D"]
+position = Vector2(9.58666, 1.31836)
+shape = SubResource("RectangleShape2D_71171")
+
+[node name="door (K-1)" parent="." instance=ExtResource("9_4ms4d")]
+position = Vector2(1268, 200)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+scene = "res://scenes/K-1 (crystal)/K-1 (crystal).tscn"
+player_x = 659.0
+player_y = 1448.0
+side = "up"
+
+[node name="door_guards" parent="." instance=ExtResource("9_4ms4d")]
+position = Vector2(257, 25)
+scene = "res://scenes/K-2/K-2 (copy).tscn"
+closed = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="door_guards"]
+position = Vector2(29.625, -39.75)
+scale = Vector2(0.59949, 0.497449)
+texture = ExtResource("10_c8xuh")
+
+[node name="Area2D" type="Area2D" parent="door_guards"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Дверь в охранную.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="door_guards/Area2D"]
+polygon = PackedVector2Array(0, 9, 28, 28, 58, 9)
+
+[node name="Box" type="StaticBody2D" parent="."]
+
+[node name="box" type="Sprite2D" parent="Box"]
+position = Vector2(102, 206)
+scale = Vector2(2.89706, 2.89706)
+texture = ExtResource("9_10xn1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Box"]
+polygon = PackedVector2Array(5, 304, 146, 305, 204, 213, 203, 107, 61, 107, 5, 176)
+
+[node name="Area2D" type="Area2D" parent="Box"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Большой контейнер.json"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Box/Area2D"]
+polygon = PackedVector2Array(6, 309, 148, 311, 209, 213, 208, 103, 57, 101, 1, 170, 1, 309)
+
+[node name="invisible_wall" type="StaticBody2D" parent="."]
+script = ExtResource("7_ev2xa")
+id = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisible_wall"]
+position = Vector2(999, 241)
+shape = SubResource("RectangleShape2D_uqncm")
+
+[node name="enemy" parent="." instance=ExtResource("11_10xn1")]
+visible = false
+position = Vector2(771, 236)
+
+[node name="enemy2" parent="." instance=ExtResource("11_10xn1")]
+visible = false
+position = Vector2(908, 234)
+enemy_id = 1
+
+[node name="enemy3" parent="." instance=ExtResource("11_10xn1")]
+visible = false
+position = Vector2(640, 232)
+enemy_id = 2
+
+[node name="enemy4" parent="." instance=ExtResource("11_10xn1")]
+visible = false
+position = Vector2(493, 236)
+enemy_id = 3
+
+[node name="enemy5" parent="." instance=ExtResource("11_10xn1")]
+visible = false
+position = Vector2(288, 228)
+enemy_id = 4
+
+[node name="button" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(849, -28)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("12_w0yiu")
+script = ExtResource("13_4uikv")
+
+[node name="Area2D" type="Area2D" parent="button"]
+script = ExtResource("5_4cw1o")
+object_d_file = "res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/Переключатель.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="button/Area2D"]
+position = Vector2(0, 10.7895)
+shape = SubResource("RectangleShape2D_4uikv")
+
+[node name="Inventory" parent="." instance=ExtResource("12_dn6qa")]
+
+[node name="Player" parent="." instance=ExtResource("17_if77x")]
+position = Vector2(1210, 241)
+limit_left = 0
+limit_top = -100
+limit_right = 1280
+limit_bottom = 550
+side = "left"

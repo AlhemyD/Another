@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var limit_right = 10000000
 @export var limit_bottom = 10000000
 @export var damage = 20
+@export var side:String
 
 var enemy_in_range = false
 var number_enemy_in_range = 0
@@ -15,6 +16,7 @@ var attack_in_progress = false
 var regen = false
 
 var screen_size
+var slain_flags={"res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/После аннигиляции противника.json":false}
 
 func _ready():
 	
@@ -24,12 +26,29 @@ func _ready():
 	cam.limit_top=limit_top
 	cam.limit_bottom=limit_bottom
 	cam.limit_right=limit_right
+	if global.side:
+		side=global.side
+	if side in ["down", "left", "right", "up"]:
+		$AnimatedSprite2D.animation=side
+	if global.player_x:
+		position.x=global.player_x
+		global.player_x=null
+	if global.player_y:
+		position.y=global.player_y
+		global.player_y=null
+	
 	
 func _physics_process(delta):
 	if get_tree().get_root().get_node("Node").get_node("DialogueBox"):
 		if get_tree().get_root().get_node("Node").get_node("DialogueBox").d_active:
 			$AnimatedSprite2D.stop()
 			return
+		elif len(global.enemies_slain)==5 and not slain_flags["res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/После аннигиляции противника.json"]:
+			var dialogue_ = get_tree().get_root().get_node("Node").get_node("DialogueBox")
+			dialogue_.set_file("res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/После аннигиляции противника.json")
+			dialogue_.current_dialogue_id=-1
+			dialogue_.start()
+			slain_flags["res://assets/dialogues/Отдел по роботизации трудовых процессов (R-1)/После аннигиляции противника.json"]=true
 	var velocity=Vector2.ZERO
 	if Input.is_action_pressed("move_right"):		
 		velocity.x+=1

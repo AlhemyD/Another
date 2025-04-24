@@ -7,6 +7,7 @@
 size = Vector2(22, 22)
 
 [node name="Item (Area2D)" type="Area2D"]
+scale = Vector2(0.65, 0.65)
 script = ExtResource("1_t8t5m")
 metadata/_edit_group_ = true
 

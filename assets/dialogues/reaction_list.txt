@@ -5,3 +5,5 @@ surprised
 silence
 deny
 relief
+angry
+sad

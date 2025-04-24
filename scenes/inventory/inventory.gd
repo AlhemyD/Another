@@ -15,3 +15,5 @@ func is_item_here(item_name:String):
 	return $InvPanel.is_item_here(item_name)
 func remove_item(item_name:String):
 	$InvPanel.remove_item(item_name)
+func give_item(item_name:String):
+	$InvPanel.give_item(item_name)

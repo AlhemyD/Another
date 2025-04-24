@@ -101,6 +101,9 @@ shape = SubResource("RectangleShape2D_wflty")
 position = Vector2(571, 572)
 rotation = 3.14159
 scene = "res://scenes/K-2/K-2.tscn"
+player_x = 472.0
+player_y = 636.0
+side = "right"
 
 [node name="Area2D" type="Area2D" parent="door (K-2)"]
 script = ExtResource("1_7fybd")

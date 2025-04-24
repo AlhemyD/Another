@@ -80,12 +80,10 @@ func next_script():
 		if read[0][d_file]=="false":
 			read[0][d_file]="true"
 			write_file("res://assets/dialogues/flags.json", read)
-		if destroy and get_tree().get_root().get_node("Node").get_node(destroy):
+		if destroy and get_tree().get_root().get_node("Node").has_node(destroy):
 			global.removed_objects.append(get_tree().get_root().get_node("Node").get_node(destroy).id)			
 			get_tree().get_root().get_node("Node").get_node(destroy).queue_free()
 			destroy=""
-		elif destroy:
-			print(get_tree().get_root().get_node("Node").get_node(destroy).name)
 			
 		if change_scene:
 			get_tree().change_scene_to_file(change_scene)
@@ -103,8 +101,19 @@ func next_script():
 	if "remove" in dialogue[current_dialogue_id]:
 		get_tree().get_root().get_node("Node").get_node("Inventory").remove_item(dialogue[current_dialogue_id]["remove"])
 	if "visible" in dialogue[current_dialogue_id] and get_tree().get_root().get_node("Node").get_node(dialogue[current_dialogue_id]["visible"]):
-		get_tree().get_root().get_node("Node").get_node(dialogue[current_dialogue_id]["visible"]).visible=true
-		global.visibled_objects.append(get_tree().get_root().get_node("Node").get_node(dialogue[current_dialogue_id]["visible"]).id)
+		if "enemy" in dialogue[current_dialogue_id]["visible"]:
+			for child in get_tree().get_root().get_node("Node").get_children():
+				if child.has_method("enemy"):
+					child.visible=true
+		else:
+			get_tree().get_root().get_node("Node").get_node(dialogue[current_dialogue_id]["visible"]).visible=true
+			global.visibled_objects.append(get_tree().get_root().get_node("Node").get_node(dialogue[current_dialogue_id]["visible"]).id)
+	if "give" in dialogue[current_dialogue_id]:
+		if dialogue[current_dialogue_id]["give"] not in global.given_items:
+			get_tree().get_root().get_node("Node").get_node("Inventory").give_item(dialogue[current_dialogue_id]["give"])
+			global.given_items.append(dialogue[current_dialogue_id]["give"])
+	if "hide" in dialogue[current_dialogue_id]:
+		global.removed_objects.append(int(dialogue[current_dialogue_id]["hide"]))
 	print(dialogue[current_dialogue_id]["text"])
 
 
