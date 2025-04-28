@@ -8,11 +8,13 @@ var player_in_area=false
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
-	player_in_area = true
+	if body.has_method("player"):
+		player_in_area = true
 
 
 func _on_body_exited(body: CharacterBody2D) -> void:
-	player_in_area = false
+	if body.has_method("player"):
+		player_in_area = false
 	
 func _on_interact():
 	if scene=="res://scenes/K-1/K-1.tscn" and global.load_file("res://assets/dialogues/flags.json")[0]["res://assets/dialogues/Лаборатория (Kоридор-1)/Вентиль.json"]!="false":
